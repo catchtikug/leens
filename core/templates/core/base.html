@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MediSee International - Medicine Safety Monitoring</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Global platform for tracking medicine safety and resistance in real time">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #1a76d1;
+      --secondary-color: #f8f9fa;
+      --accent-color: #ff6b35;
+      --dark-color: #2c3e50;
+      --light-color: #ffffff;
+      --success-color: #28a745;
+      --warning-color: #ffc107;
+      --danger-color: #dc3545;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--secondary-color);
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .navbar {
+      background: linear-gradient(135deg, var(--primary-color), #0d47a1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 0.8rem 0;
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 0.5px;
+      color: var(--light-color) !important;
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar-brand i {
+      margin-right: 10px;
+      font-size: 1.5rem;
+    }
+    
+    .btn {
+      font-weight: 500;
+      padding: 0.6rem 1.5rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-primary:hover {
+      background-color: #1565c0;
+      border-color: #1565c0;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .page-title {
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .page-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+    
+    .form-control, .form-select {
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      border: 1px solid #e0e0e0;
+    }
+    
+    .form-control:focus, .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.25rem rgba(26, 118, 209, 0.25);
+    }
+    
+    .footer {
+      background-color: var(--dark-color);
+      color: var(--light-color);
+      padding: 3rem 0;
+      margin-top: 4rem;
+    }
+    
+    /* Custom utility classes */
+    .rounded-lg {
+      border-radius: 12px;
+    }
+    
+    .shadow-soft {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    
+    .hover-scale {
+      transition: transform 0.3s ease;
+    }
+    
+    .hover-scale:hover {
+      transform: scale(1.03);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .navbar-brand {
+        font-size: 1.5rem;
+      }
+      
+      .page-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <i class="fas fa-shield-alt"></i> MediSee
+      </a>
+      <div class="ms-auto d-flex align-items-center">
+          <span class="text-light me-3">Welcome, User </span>
+          <a href="/dashboard/" class="btn btn-outline-light me-2">
+            <i class="fas fa-tachometer-alt me-1"></i> Dashboard
+          </a>
+          <a href="{% url 'login' %}" class="btn btn-light">
+            <i class="fas fa-sign-out-alt me-1"></i> Login
+          </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-5">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h5 class="mb-3">MediSee International</h5>
+          <p>Global platform for tracking medicine safety and resistance in real time.</p>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h5 class="mb-3">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="/" class="text-light">Home</a></li>
+            <li class="mb-2"><a href="/dashboard/" class="text-light">Dashboard</a></li>
+            <li class="mb-2"><a href="/about/" class="text-light">About Us</a></li>
+            <li class="mb-2"><a href="/contact/" class="text-light">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5 class="mb-3">Connect With Us</h5>
+          <div class="d-flex gap-3">
+            <a href="#" class="text-light fs-4"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-light fs-4"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-light fs-4"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-light fs-4"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 bg-light opacity-25">
+      <div class="text-center">
+        <p class="mb-0">&copy; 2023 MediSee International. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

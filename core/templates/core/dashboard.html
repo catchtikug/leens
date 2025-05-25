@@ -1,0 +1,577 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="dashboard">
+  <!-- Dashboard Header -->
+  <div class="dashboard-header">
+    <div>
+      <h1 class="dashboard-title">Medicine Safety Dashboard</h1>
+      <p class="dashboard-subtitle">Monitor and analyze adverse drug reactions in real-time</p>
+    </div>
+    <div class="dashboard-actions">
+      <button class="btn btn-download">
+        <i class="fas fa-file-export"></i> Export
+      </button>
+      <div class="date-selector">
+        <i class="fas fa-calendar-alt"></i> Last 30 days
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="summary-grid">
+    <!-- Total Reports -->
+    <div class="summary-card total-reports">
+      <div class="card-icon">
+        <i class="fas fa-clipboard-list"></i>
+      </div>
+      <div class="card-content">
+        <h3>1,842</h3>
+        <p>Total Reports</p>
+        <div class="trend positive">
+          <i class="fas fa-arrow-up"></i> 12.5%
+        </div>
+      </div>
+    </div>
+
+    <!-- Side Effects -->
+    <div class="summary-card side-effects">
+      <div class="card-icon">
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
+      <div class="card-content">
+        <h3>1,243</h3>
+        <p>Side Effects</p>
+        <div class="trend positive">
+          <i class="fas fa-arrow-up"></i> 8.3%
+        </div>
+      </div>
+    </div>
+
+    <!-- Resistance Cases -->
+    <div class="summary-card resistance-cases">
+      <div class="card-icon">
+        <i class="fas fa-biohazard"></i>
+      </div>
+      <div class="card-content">
+        <h3>599</h3>
+        <p>Resistance Cases</p>
+        <div class="trend negative">
+          <i class="fas fa-arrow-down"></i> 3.2%
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Facilities -->
+    <div class="summary-card active-facilities">
+      <div class="card-icon">
+        <i class="fas fa-hospital"></i>
+      </div>
+      <div class="card-content">
+        <h3>87</h3>
+        <p>Active Facilities</p>
+        <div class="trend positive">
+          <i class="fas fa-arrow-up"></i> 5.6%
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="dashboard-content">
+    <!-- Left Column -->
+    <div class="dashboard-column">
+      <!-- Reports Chart -->
+      <div class="dashboard-card chart-card">
+        <div class="card-header">
+          <h3><i class="fas fa-chart-line"></i> Reports Overview</h3>
+          <div class="time-filters">
+            <button class="active">Month</button>
+            <button>Quarter</button>
+            <button>Year</button>
+          </div>
+        </div>
+        <div class="chart-placeholder">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+            alt="Data analytics dashboard showing medical statistics" 
+            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+      </div>
+        <!-- <div class="chart-placeholder">
+          <img src="https://health-it.ch/wp-content/uploads/2021/03/medizin-dashboard.png" alt="Sample chart showing report trends">
+        </div> -->
+      </div>
+
+      <!-- Recent Reports -->
+      <div class="dashboard-card recent-reports">
+        <div class="card-header">
+          <h3><i class="fas fa-clock"></i> Recent Reports</h3>
+          <a href="#" class="view-all">View All</a>
+        </div>
+        <div class="report-list">
+          <div class="report-item">
+            <div class="report-type side-effect">
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="report-details">
+              <h4>Severe headache with Amoxicillin</h4>
+              <p>Reported 2 hours ago by Dr. Smith</p>
+            </div>
+            <div class="report-severity high">
+              High
+            </div>
+          </div>
+          
+          <div class="report-item">
+            <div class="report-type resistance">
+              <i class="fas fa-virus"></i>
+            </div>
+            <div class="report-details">
+              <h4>Resistance to Azithromycin</h4>
+              <p>Reported 5 hours ago by St. Mary's Hospital</p>
+            </div>
+            <div class="report-severity medium">
+              Medium
+            </div>
+          </div>
+          
+          <div class="report-item">
+            <div class="report-type side-effect">
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="report-details">
+              <h4>Skin rash with Penicillin</h4>
+              <p>Reported yesterday by Dr. Johnson</p>
+            </div>
+            <div class="report-severity medium">
+              Medium
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="dashboard-column">
+      <!-- Top Side Effects -->
+      <div class="dashboard-card top-effects">
+        <div class="card-header">
+          <h3><i class="fas fa-exclamation-triangle"></i> Top Side Effects</h3>
+          <a href="#" class="view-all">View All</a>
+        </div>
+        <div class="effect-list">
+          <div class="effect-item">
+            <div class="effect-rank">1</div>
+            <div class="effect-name">Headache</div>
+            <div class="effect-count">247 reports</div>
+            <div class="effect-trend positive">
+              <i class="fas fa-arrow-up"></i> 12%
+            </div>
+          </div>
+          
+          <div class="effect-item">
+            <div class="effect-rank">2</div>
+            <div class="effect-name">Skin Rash</div>
+            <div class="effect-count">189 reports</div>
+            <div class="effect-trend positive">
+              <i class="fas fa-arrow-up"></i> 8%
+            </div>
+          </div>
+          
+          <div class="effect-item">
+            <div class="effect-rank">3</div>
+            <div class="effect-name">Nausea</div>
+            <div class="effect-count">156 reports</div>
+            <div class="effect-trend negative">
+              <i class="fas fa-arrow-down"></i> 5%
+            </div>
+          </div>
+          
+          <div class="effect-item">
+            <div class="effect-rank">4</div>
+            <div class="effect-name">Dizziness</div>
+            <div class="effect-count">132 reports</div>
+            <div class="effect-trend positive">
+              <i class="fas fa-arrow-up"></i> 15%
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="quick-actions">
+        <a href="{% url 'side_effect' %}" class="action-button report-side-effect">
+          <i class="fas fa-plus-circle"></i>
+          <span>Report Side Effect</span>
+        </a>
+        <a href="{% url 'drug_resistance' %}" class="action-button report-resistance">
+          <i class="fas fa-plus-circle"></i>
+          <span>Report Resistance</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Base Styles */
+  .dashboard {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* Header Styles */
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .dashboard-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+  }
+
+  .dashboard-subtitle {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin: 5px 0 0;
+  }
+
+  .dashboard-actions {
+    display: flex;
+    gap: 15px;
+  }
+
+  .btn-download {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-download:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+  }
+
+  .date-selector {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #7f8c8d;
+  }
+
+  /* Summary Grid */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .summary-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+
+  .summary-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  .card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 20px;
+    color: white;
+  }
+
+  .total-reports .card-icon { background-color: #3498db; }
+  .side-effects .card-icon { background-color: #f39c12; }
+  .resistance-cases .card-icon { background-color: #e74c3c; }
+  .active-facilities .card-icon { background-color: #2ecc71; }
+
+  .card-content h3 {
+    font-size: 24px;
+    margin: 0 0 5px;
+    color: #2c3e50;
+  }
+
+  .card-content p {
+    margin: 0;
+    color: #7f8c8d;
+    font-size: 14px;
+  }
+
+  .trend {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 5px;
+  }
+
+  .positive { color: #2ecc71; }
+  .negative { color: #e74c3c; }
+
+  /* Dashboard Content */
+  .dashboard-content {
+    display: flex;
+    gap: 20px;
+  }
+
+  .dashboard-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Dashboard Cards */
+  .dashboard-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    overflow: hidden;
+  }
+
+  .card-header {
+    padding: 20px;
+    border-bottom: 1px solid #ecf0f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .view-all {
+    color: #3498db;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  /* Chart Card */
+  .chart-card {
+    height: 350px;
+  }
+
+  .time-filters {
+    display: flex;
+    gap: 5px;
+  }
+
+  .time-filters button {
+    background: none;
+    border: 1px solid #bdc3c7;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .time-filters button.active {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+  }
+
+  .chart-placeholder {
+    height: calc(100% - 61px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .chart-placeholder img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+  }
+
+  /* Recent Reports */
+  .recent-reports {
+    flex-grow: 1;
+  }
+
+  .report-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .report-item {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #ecf0f1;
+    transition: background-color 0.2s ease;
+  }
+
+  .report-item:hover {
+    background-color: #f8f9fa;
+  }
+
+  .report-type {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: white;
+  }
+
+  .report-type.side-effect { background-color: #f39c12; }
+  .report-type.resistance { background-color: #e74c3c; }
+
+  .report-details {
+    flex-grow: 1;
+  }
+
+  .report-details h4 {
+    margin: 0 0 5px;
+    font-size: 15px;
+    color: #2c3e50;
+  }
+
+  .report-details p {
+    margin: 0;
+    font-size: 13px;
+    color: #7f8c8d;
+  }
+
+  .report-severity {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 20px;
+  }
+
+  .report-severity.high { background-color: #ffebee; color: #e74c3c; }
+  .report-severity.medium { background-color: #fff8e1; color: #f39c12; }
+  .report-severity.low { background-color: #e8f5e9; color: #2ecc71; }
+
+  /* Top Effects */
+  .effect-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .effect-item {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #ecf0f1;
+  }
+
+  .effect-rank {
+    font-weight: 700;
+    color: #7f8c8d;
+    width: 20px;
+  }
+
+  .effect-name {
+    flex-grow: 1;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+
+  .effect-count {
+    color: #7f8c8d;
+    font-size: 14px;
+    margin-right: 15px;
+  }
+
+  /* Quick Actions */
+  .quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .action-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .action-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .action-button i {
+    font-size: 20px;
+  }
+
+  .report-side-effect {
+    background-color: #f39c12;
+  }
+
+  .report-resistance {
+    background-color: #e74c3c;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .summary-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .dashboard-content {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .dashboard-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+    
+    .summary-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+{% endblock %}

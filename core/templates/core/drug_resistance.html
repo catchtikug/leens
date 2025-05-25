@@ -1,0 +1,90 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="page-title">
+        <i class="fas fa-biohazard text-danger me-2"></i> Report Drug Resistance
+      </h2>
+      <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left me-1"></i> Back to Dashboard
+      </a>
+    </div>
+    
+    <div class="card shadow-sm">
+      <div class="card-header bg-danger bg-opacity-10">
+        <h5 class="mb-0">Resistance Case Details</h5>
+      </div>
+      <div class="card-body">
+        <form method="post" class="needs-validation" novalidate>
+          {% csrf_token %}
+          
+          <div class="mb-4">
+            <div class="form-check form-switch mb-3">
+              {{ form.retreated_within_30_days }}
+              <label class="form-check-label" for="{{ form.retreated_within_30_days.id_for_label }}">
+                {{ form.retreated_within_30_days.label }}
+              </label>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <label for="id_same_disease" class="form-label">Same Disease*</label>
+            {{ form.same_disease }}
+            <div class="invalid-feedback">
+              Please specify if it's the same disease.
+            </div>
+          </div>
+          
+          <div class="row mb-4">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <label for="id_first_diagnosis_method" class="form-label">First Diagnosis Method*</label>
+              {{ form.first_diagnosis_method }}
+              <div class="invalid-feedback">
+                Please provide the first diagnosis method.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="id_second_diagnosis_method" class="form-label">Second Diagnosis Method*</label>
+              {{ form.second_diagnosis_method }}
+              <div class="invalid-feedback">
+                Please provide the second diagnosis method.
+              </div>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <label for="id_treatment_details" class="form-label">Treatment Details*</label>
+            {{ form.treatment_details }}
+            <div class="invalid-feedback">
+              Please provide treatment details.
+            </div>
+            <div class="form-text">Include medication names, dosages, and duration.</div>
+          </div>
+          
+          <div class="row mb-4">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <label for="id_brand_name" class="form-label">Brand Name</label>
+              {{ form.brand_name }}
+            </div>
+            <div class="col-md-6">
+              <label for="id_batch_number" class="form-label">Batch Number</label>
+              {{ form.batch_number }}
+            </div>
+          </div>
+          
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="reset" class="btn btn-outline-secondary me-md-2">
+              <i class="fas fa-undo me-1"></i> Reset
+            </button>
+            <a href="{% url 'dashboard' %}">
+            <div class="btn btn-danger">
+              <i class="fas fa-paper-plane me-1"></i> Submit Report
+            </div></a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
